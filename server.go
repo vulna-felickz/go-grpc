@@ -71,7 +71,7 @@ func startServerCredsVar() {
 }
 
 func startServerWithOtherCreds() {
-    creds := credentials.NewTLS(tlsConfig)
+	creds := credentials.NewTLS(tlsConfig)
 	logger := penglog.GlobalLogger()
 	logInterceptor := penggrpc.NewAccessLogInterceptor(&logger, grpcLogFields)
 	opts := []grpc.ServerOption{
@@ -85,4 +85,9 @@ func startServerWithOtherCreds() {
 	// ok:grpc-server-insecure-connection
 	grpcServer := grpc.NewServer(opts)
 	_ = grpcServer
+}
+
+func main() {
+	unsafe()
+	safe()
 }
